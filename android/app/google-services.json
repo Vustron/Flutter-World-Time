@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "592640683409",
+    "project_id": "flutter-worldtime",
+    "storage_bucket": "flutter-worldtime.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592640683409:android:bc3367d92fb9f6af2ebe30",
+        "android_client_info": {
+          "package_name": "com.example.my_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAedJDZupAr_LRdA5EOYCGtTwcgVXv7A4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
