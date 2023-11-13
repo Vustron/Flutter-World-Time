@@ -19,6 +19,10 @@ The Flutter World Time App is a mobile application built using Dart and Flutter 
   </tr>
 </table>
 
+### **Quick Demo**
+
+https://github.com/Vustron/Flutter-World-Time/assets/121848978/ee4f07a2-cbe9-4b10-bca8-2aa613fe4c6c
+
 ### **Features**
 
 1. **World Time Data**
