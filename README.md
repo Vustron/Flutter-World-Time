@@ -1,4 +1,4 @@
-### **<h1>Flutter World Time App Release Notes</h1>**
+### **<h1>Flutter World Time App</h1>**
 
 ### **Overview**
 
@@ -52,7 +52,8 @@ flutter pub get
 
 Run the app on an emulator or physical device.
 
-**### Feedback**
+### **Feedback**
+
 I'll welcome feedback and contributions from the community to help improve the Flutter World Time App. If you encounter any issues or have suggestions for enhancements, please open an issue or submit a pull request.
 
 Thank you for using the World-Time-App!
