@@ -30,7 +30,7 @@ class _ProfileContentState extends State<ProfileContent> {
     }
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(40.0, 120.0, 40.0, 0),
+      padding: EdgeInsets.fromLTRB(20.0, 120.0, 40.0, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
