@@ -43,7 +43,7 @@ class _ChangeLocationContentState extends State<ChangeLocationContent> {
                 widget.locations[index].location,
                 style: GoogleFonts.zenDots(
                   color: Colors.amber,
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -51,7 +51,7 @@ class _ChangeLocationContentState extends State<ChangeLocationContent> {
                 widget.locations[index].url,
                 style: GoogleFonts.zenDots(
                   color: Colors.amber,
-                  fontSize: 16,
+                  fontSize: 13,
                 ),
               ),
               leading: CircleAvatar(

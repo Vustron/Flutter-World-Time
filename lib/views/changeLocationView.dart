@@ -31,6 +31,15 @@ class _ChangeLocationState extends State<ChangeLocation> {
     WorldTimeData(
         url: 'Asia/Manila', location: 'Manila', flag: 'philippines.jpg'),
     WorldTimeData(url: 'Asia/Tokyo', location: 'Tokyo', flag: 'japan.png'),
+    WorldTimeData(url: 'Asia/Riyadh', location: 'Riyadh', flag: 'saudi.png'),
+    WorldTimeData(
+        url: 'Asia/Vladivostok', location: 'Vladivostok', flag: 'russia.jpg'),
+    WorldTimeData(url: 'Asia/Yakutsk', location: 'Yakutsk', flag: 'russia.jpg'),
+    WorldTimeData(
+        url: 'Asia/Yekaterinburg',
+        location: 'Yekaterinburg',
+        flag: 'russia.jpg'),
+    WorldTimeData(url: 'Europe/Rome', location: 'Rome', flag: 'italy.png'),
   ];
 
   @override

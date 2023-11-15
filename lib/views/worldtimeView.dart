@@ -22,7 +22,7 @@ class _WorldTimeState extends State<WorldTime> {
 
     String bgImage = (data['isDayTime'] ?? false) ? 'day.jpg' : 'night.jpg';
     Color textColor =
-        (data['isDayTime'] ?? false) ? Colors.amber : Colors.amber;
+        (data['isDayTime'] ?? false) ? Colors.white70 : Colors.white70;
 
     return Scaffold(
       body: Column(
