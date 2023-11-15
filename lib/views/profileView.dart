@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../components/profileContent.dart';
 import '../controller/authController.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import '../model/googleAuthModel.dart';
+import '../controller/googleAuthController.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});

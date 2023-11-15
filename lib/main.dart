@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'auth/signup.dart';
 import 'controller/authController.dart';
 import 'auth/signin.dart';
-import 'model/googleAuthModel.dart';
+import 'controller/googleAuthController.dart';
 import 'utils/wrapper.dart';
 import 'views/profileView.dart';
 import 'views/worldtimeView.dart';
