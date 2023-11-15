@@ -33,7 +33,7 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(0, 120.0, 0, 0),
+            padding: EdgeInsets.fromLTRB(0, 150.0, 0, 0),
             child: Column(
               children: <Widget>[
                 TextButton.icon(
