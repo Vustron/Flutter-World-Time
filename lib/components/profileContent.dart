@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../controller/authController.dart';
+import '../controller/localAuth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfileContent extends StatefulWidget {

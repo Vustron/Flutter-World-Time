@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../controller/authController.dart';
+import '../controller/localAuth.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});

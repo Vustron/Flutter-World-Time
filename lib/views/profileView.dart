@@ -7,9 +7,9 @@ import 'package:flutter_world_time_app/components/editProfileContent.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../components/profileContent.dart';
-import '../controller/authController.dart';
+import '../controller/localAuth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import '../controller/googleAuthController.dart';
+import '../controller/googleAuth.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});

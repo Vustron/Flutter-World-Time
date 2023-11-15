@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../components/changeLocationContent.dart';
-import '../model/worldtimeModel.dart';
+import '../model/worldtime.dart';
 
 class ChangeLocation extends StatefulWidget {
   const ChangeLocation({super.key});

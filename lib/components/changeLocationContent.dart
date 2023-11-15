@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../model/worldtimeModel.dart';
+import '../model/worldtime.dart';
 
 class ChangeLocationContent extends StatefulWidget {
   final List<WorldTimeData> locations;

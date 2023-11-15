@@ -1,7 +1,7 @@
 // ignore_for_file: file_names, prefer_const_constructors, prefer_const_constructors_in_immutables, camel_case_types, unused_import, avoid_print, unused_local_variable, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import '../model/worldtimeModel.dart';
+import '../model/worldtime.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {

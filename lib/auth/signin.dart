@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, camel_case_types, unused_import, avoid_unnecessary_containers, sort_child_properties_last, unused_field, unused_local_variable, avoid_print, use_build_context_synchronously, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
-import 'package:flutter_world_time_app/controller/googleAuthController.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../controller/authController.dart';
+import '../controller/localAuth.dart';
 import 'package:social_auth_buttons/social_auth_buttons.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../controller/googleAuth.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -75,7 +75,7 @@ class _SignInState extends State<SignIn> {
                   },
                   style: GoogleFonts.zenDots(color: Colors.amber),
                 ),
-                SizedBox(height: 40.0),
+                SizedBox(height: 10.0),
                 TextFormField(
                   controller: _passwordController,
                   decoration: InputDecoration(
@@ -110,7 +110,7 @@ class _SignInState extends State<SignIn> {
                   },
                   style: GoogleFonts.zenDots(color: Colors.amber),
                 ),
-                SizedBox(height: 40.0),
+                SizedBox(height: 10.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -165,7 +165,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ],
                 ),
-                SizedBox(height: 30.0),
+                SizedBox(height: 10.0),
                 Divider(
                   height: 20,
                   thickness: 2,
@@ -204,7 +204,7 @@ class _SignInState extends State<SignIn> {
                       style: AuthButtonStyle.icon,
                     ),
                     Text(
-                      'Sign in with Google',
+                      'Sign in using Google    ',
                       style: GoogleFonts.zenDots(
                         color: Colors.amberAccent,
                         letterSpacing: 1.0,
@@ -214,7 +214,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ],
                 ),
-                SizedBox(height: 50.0),
+                SizedBox(height: 80.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
