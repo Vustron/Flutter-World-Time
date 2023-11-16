@@ -283,9 +283,9 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                                 barrierDismissible: false,
                                 builder: (BuildContext context) {
                                   return Center(
-                                    child: CircularProgressIndicator(
+                                    child: SpinKitPouringHourGlass(
                                       color: Colors.amber,
-                                      strokeWidth: 5.0,
+                                      size: 100.0,
                                     ),
                                   );
                                 },

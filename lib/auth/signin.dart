@@ -136,11 +136,12 @@ class _SignInState extends State<SignIn> {
                         backgroundColor: Colors.green,
                       ),
                       child: Text(
-                        'SignIn',
+                        'Sign-In',
                         style: GoogleFonts.zenDots(
+                          color: Colors.white,
+                          letterSpacing: 1.0,
                           fontSize: 12.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white70,
                         ),
                       ),
                     ),
@@ -155,11 +156,12 @@ class _SignInState extends State<SignIn> {
                         backgroundColor: Colors.blue,
                       ),
                       child: Text(
-                        'SignUp',
+                        'Sign-Up',
                         style: GoogleFonts.zenDots(
+                          color: Colors.white,
+                          letterSpacing: 1.0,
                           fontSize: 12.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white70,
                         ),
                       ),
                     ),

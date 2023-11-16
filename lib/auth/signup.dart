@@ -53,7 +53,7 @@ class _SignUpState extends State<SignUp> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 20.0),
+                SizedBox(height: 30.0),
                 TextFormField(
                   controller: _emailController,
                   decoration: InputDecoration(
@@ -73,7 +73,7 @@ class _SignUpState extends State<SignUp> {
                   },
                   style: GoogleFonts.zenDots(color: Colors.amber),
                 ),
-                SizedBox(height: 40.0),
+                SizedBox(height: 30.0),
                 TextFormField(
                   controller: _passwordController,
                   decoration: InputDecoration(
@@ -108,7 +108,7 @@ class _SignUpState extends State<SignUp> {
                   },
                   style: GoogleFonts.zenDots(color: Colors.amber),
                 ),
-                SizedBox(height: 40.0),
+                SizedBox(height: 30.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -136,7 +136,7 @@ class _SignUpState extends State<SignUp> {
                       child: Text(
                         'Sign-Up',
                         style: GoogleFonts.zenDots(
-                          color: Colors.white70,
+                          color: Colors.white,
                           letterSpacing: 1.0,
                           fontSize: 12.0,
                           fontWeight: FontWeight.bold,
@@ -156,7 +156,7 @@ class _SignUpState extends State<SignUp> {
                       child: Text(
                         'Sign-In',
                         style: GoogleFonts.zenDots(
-                          color: Colors.white70,
+                          color: Colors.white,
                           letterSpacing: 1.0,
                           fontSize: 12.0,
                           fontWeight: FontWeight.bold,
