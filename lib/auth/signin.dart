@@ -75,7 +75,7 @@ class _SignInState extends State<SignIn> {
                   },
                   style: GoogleFonts.zenDots(color: Colors.amber),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 30.0),
                 TextFormField(
                   controller: _passwordController,
                   decoration: InputDecoration(
@@ -110,7 +110,7 @@ class _SignInState extends State<SignIn> {
                   },
                   style: GoogleFonts.zenDots(color: Colors.amber),
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 30.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -165,7 +165,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ],
                 ),
-                SizedBox(height: 10.0),
+                SizedBox(height: 30.0),
                 Divider(
                   height: 20,
                   thickness: 2,

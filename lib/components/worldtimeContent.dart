@@ -33,7 +33,7 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(0, 150.0, 0, 0),
+            padding: EdgeInsets.fromLTRB(0, 140.0, 0, 0),
             child: Column(
               children: <Widget>[
                 TextButton.icon(
@@ -84,8 +84,8 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                         widget.data = {
                           'time': result['time'],
                           'location': result['location'],
-                          'isDayTime': result['isDayTime'],
                           'flag': result['flag'],
+                          'isDayTime': result['isDayTime'],
                         };
                       });
                     });
@@ -101,7 +101,7 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      widget.data?['location'] ?? '',
+                      widget.data != null ? widget.data!['location'] ?? '' : '',
                       style: GoogleFonts.abrilFatface(
                         fontSize: 28.0,
                         letterSpacing: 2.0,
