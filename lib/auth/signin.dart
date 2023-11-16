@@ -223,9 +223,9 @@ class _SignInState extends State<SignIn> {
                     TextButton(
                       onPressed: () => {},
                       child: Text(
-                        '\u00A9 Made by Vustron Vustronus 2023',
+                        'Ver.2.0 \u00A9 Made by Vustron Vustronus 2023',
                         style: GoogleFonts.zenDots(
-                          fontSize: 8.0,
+                          fontSize: 7.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.grey[700],
                         ),

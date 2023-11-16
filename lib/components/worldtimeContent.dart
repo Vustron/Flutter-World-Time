@@ -207,16 +207,16 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                   },
                 ),
               ),
-              SizedBox(height: 139.0),
+              SizedBox(height: 139),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
                     onPressed: () => {},
                     child: Text(
-                      '\u00A9 Made by Vustron Vustronus 2023',
+                      'Ver.2.0 \u00A9 Made by Vustron Vustronus 2023',
                       style: GoogleFonts.zenDots(
-                        fontSize: 10.0,
+                        fontSize: 7.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.grey[700],
                       ),
@@ -290,10 +290,11 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                                   );
                                 },
                               );
-                              Future.delayed(Duration(seconds: 1), () async {
-                                Navigator.pop(context); // Close the dialog
-                                dynamic result = await Navigator.pushNamed(
-                                    context, '/changelocation');
+                              Future.delayed(Duration(seconds: 0), () async {
+                                Navigator.pop(context);
+                                dynamic result =
+                                    await Navigator.pushReplacementNamed(
+                                        context, '/changelocation');
                                 setState(() {
                                   widget.data = {
                                     'time': result['time'],

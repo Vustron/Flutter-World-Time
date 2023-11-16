@@ -13,7 +13,7 @@ class ChangeLocation extends StatefulWidget {
 }
 
 class _ChangeLocationState extends State<ChangeLocation> {
-  List<WorldTimeData> locations = [
+  final List<WorldTimeData> locations = [
     WorldTimeData(url: 'Europe/London', location: 'London', flag: 'uk.png'),
     WorldTimeData(
         url: 'Europe/Berlin', location: 'Berlin', flag: 'germany.png'),
