@@ -9,7 +9,6 @@ import 'controller/localAuth.dart';
 import 'auth/signin.dart';
 import 'controller/googleAuth.dart';
 import 'utils/wrapper.dart';
-import 'views/profileView.dart';
 import 'views/worldtimeView.dart';
 import 'views/changeLocationView.dart';
 import 'utils/loader.dart';
@@ -54,9 +53,6 @@ class _MyAppState extends State<MyApp> {
                 ),
             '/signin': (context) => SignIn(),
             '/signup': (context) => SignUp(),
-            '/profile': (context) => Wrapper(
-                  child: Profile(),
-                ),
             '/changelocation': (context) => Wrapper(
                   child: ChangeLocation(),
                 ),
