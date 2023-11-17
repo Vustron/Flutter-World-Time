@@ -214,7 +214,7 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                   TextButton(
                     onPressed: () => {},
                     child: Text(
-                      'Ver.2.2 \u00A9 Made by Vustron Vustronus 2023',
+                      'Ver.2.3 \u00A9 Made by Vustron Vustronus 2023',
                       style: GoogleFonts.zenDots(
                         fontSize: 7.0,
                         fontWeight: FontWeight.bold,
