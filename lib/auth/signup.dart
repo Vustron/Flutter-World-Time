@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import '../controller/localAuth.dart';
 import 'package:social_auth_buttons/social_auth_buttons.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-
 import 'signin.dart';
 
 class SignUp extends StatefulWidget {
@@ -33,13 +32,13 @@ class _SignUpState extends State<SignUp> {
       backgroundColor: Colors.grey[900],
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
+          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 50.0),
           child: Form(
             key: _formkey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 10.0),
+                SizedBox(height: 40.0),
                 Center(
                   child: CircleAvatar(
                     backgroundImage: AssetImage('assets/images/logo.png'),
@@ -210,7 +209,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ],
                 ),
-                SizedBox(height: 220.0),
+                SizedBox(height: 195.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

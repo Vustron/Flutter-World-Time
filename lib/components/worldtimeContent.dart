@@ -157,25 +157,30 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        if (!provider.isGoogleUser)
-                          SizedBox(
-                            width: 100,
-                            child: ElevatedButton.icon(
-                              onPressed: () => _showEditProfilePanel(),
-                              icon: Icon(Icons.settings),
-                              label: Text(
-                                'Edit',
-                                style: GoogleFonts.zenDots(fontSize: 8),
+                        SizedBox(
+                          width: 100,
+                          child: ElevatedButton.icon(
+                            onPressed: () => _showEditProfilePanel(),
+                            icon: Icon(
+                              Icons.settings,
+                              color: Colors.white,
+                            ),
+                            label: Text(
+                              'Edit',
+                              style: GoogleFonts.zenDots(
+                                fontSize: 10,
+                                color: Colors.white,
                               ),
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                  Colors.green,
-                                ),
+                            ),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                Colors.green,
                               ),
                             ),
                           ),
+                        ),
                         SizedBox(
-                          width: 100,
+                          width: 121,
                           child: ElevatedButton.icon(
                             onPressed: () async {
                               try {
@@ -191,10 +196,16 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                                 EasyLoading.showError('Logout Failed: $e');
                               }
                             },
-                            icon: Icon(Icons.logout),
+                            icon: Icon(
+                              Icons.logout,
+                              color: Colors.white,
+                            ),
                             label: Text(
                               'Logout',
-                              style: GoogleFonts.zenDots(fontSize: 8),
+                              style: GoogleFonts.zenDots(
+                                fontSize: 10,
+                                color: Colors.white,
+                              ),
                             ),
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
@@ -208,7 +219,7 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                   },
                 ),
               ),
-              SizedBox(height: 139),
+              SizedBox(height: 126),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

@@ -73,10 +73,8 @@ class _EditProfileState extends State<EditProfile> {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     EasyLoading.show(status: 'Updating user profile...');
-
                     await _auth.updateUserData(
                         _currentDisplayName, _currentEmail);
-
                     EasyLoading.showSuccess('Update Success!');
                     Navigator.pushNamed(context, '/profile');
                     EasyLoading.dismiss();
@@ -89,6 +87,7 @@ class _EditProfileState extends State<EditProfile> {
                   'Update',
                   style: GoogleFonts.zenDots(
                     fontSize: 14.0,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

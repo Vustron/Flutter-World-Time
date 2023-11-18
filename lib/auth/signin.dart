@@ -36,13 +36,13 @@ class _SignInState extends State<SignIn> {
       backgroundColor: Colors.grey[900],
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 50.0),
+          padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 50.0),
           child: Form(
             key: _formkey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 10.0),
+                SizedBox(height: 40.0),
                 Center(
                   child: CircleAvatar(
                     backgroundImage: AssetImage('assets/images/logo.png'),
@@ -243,7 +243,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ],
                 ),
-                SizedBox(height: 80.0),
+                SizedBox(height: 50.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
