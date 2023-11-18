@@ -165,14 +165,14 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ],
                 ),
-                SizedBox(height: 200.0),
+                SizedBox(height: 220.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     TextButton(
                       onPressed: () => {},
                       child: Text(
-                        'Ver.2.3 \u00A9 Made by Vustron Vustronus 2023',
+                        'Ver.2.3.1 \u00A9 Made by Vustron Vustronus 2023',
                         style: GoogleFonts.zenDots(
                           fontSize: 7.0,
                           fontWeight: FontWeight.bold,

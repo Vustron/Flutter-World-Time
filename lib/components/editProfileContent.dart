@@ -23,7 +23,7 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+      padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
       children: <Widget>[
         Center(
           child: Text(

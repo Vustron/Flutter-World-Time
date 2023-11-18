@@ -59,6 +59,7 @@ class _ChangeLocationState extends State<ChangeLocation> {
         centerTitle: true,
         backgroundColor: Colors.grey[800],
         elevation: 0.0,
+        automaticallyImplyLeading: false,
       ),
       body: ChangeLocationContent(locations: locations),
     );
