@@ -119,7 +119,8 @@ class _SignInState extends State<SignIn> {
                   children: [
                     ElevatedButton(
                       onPressed: () async {
-                        if (_formkey.currentState!.validate()) {
+                        if (_formkey.currentState != null &&
+                            _formkey.currentState!.validate()) {
                           EasyLoading.show(status: 'Logging in...');
                           dynamic result = await _auth
                               .signInWithEmailAndPassword(email, password);
@@ -130,26 +131,8 @@ class _SignInState extends State<SignIn> {
                             print('signed in');
                             EasyLoading.showSuccess('SignIn Success!');
                             print(result.uid);
-                            await Future.delayed(Duration(seconds: 2));
-                            Navigator.pushReplacement(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder: (_, __, ___) => Wrapper(
-                                  child: Loading(),
-                                ),
-                                transitionsBuilder: (context, animation,
-                                    secondaryAnimation, child) {
-                                  const begin = Offset(0.0, -1.0);
-                                  const end = Offset.zero;
-                                  const curve = Curves.easeInOutQuart;
-                                  var tween = Tween(begin: begin, end: end)
-                                      .chain(CurveTween(curve: curve));
-                                  var offsetAnimation = animation.drive(tween);
-                                  return SlideTransition(
-                                      position: offsetAnimation, child: child);
-                                },
-                              ),
-                            );
+                            await Future.delayed(Duration(seconds: 1));
+                            Navigator.pushNamed(context, '/getdata');
                           }
                         }
                       },
@@ -234,35 +217,12 @@ class _SignInState extends State<SignIn> {
                       onPressed: () async {
                         try {
                           final provider = Provider.of<GoogleSignInProvider>(
-                            context,
-                            listen: false,
-                          );
+                              context,
+                              listen: false);
                           EasyLoading.show(status: 'Loading...');
                           await provider.googleLogin();
                           EasyLoading.showSuccess('SignIn Success!');
-                          await Future.delayed(Duration(seconds: 2));
-                          Navigator.pushReplacement(
-                            context,
-                            PageRouteBuilder(
-                              pageBuilder: (_, __, ___) => Wrapper(
-                                child: Loading(),
-                              ),
-                              transitionsBuilder: (context, animation,
-                                  secondaryAnimation, child) {
-                                const begin = Offset(0.0, -1.0);
-                                const end = Offset.zero;
-                                const curve = Curves.easeInOutQuart;
-
-                                var tween = Tween(begin: begin, end: end)
-                                    .chain(CurveTween(curve: curve));
-
-                                var offsetAnimation = animation.drive(tween);
-
-                                return SlideTransition(
-                                    position: offsetAnimation, child: child);
-                              },
-                            ),
-                          );
+                          Navigator.pushNamed(context, '/getdata');
                         } catch (error) {
                           print('Error during Google login: $error');
                           EasyLoading.showError('Something went wrong');
@@ -290,7 +250,7 @@ class _SignInState extends State<SignIn> {
                     TextButton(
                       onPressed: () => {},
                       child: Text(
-                        'Ver.2.3.1 \u00A9 Made by Vustron Vustronus 2023',
+                        'Ver.2.3.2 \u00A9 Made by Vustron Vustronus 2023',
                         style: GoogleFonts.zenDots(
                           fontSize: 7.0,
                           fontWeight: FontWeight.bold,

@@ -142,6 +142,7 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                     email,
                     style: GoogleFonts.zenDots(
                       color: Colors.amberAccent,
+                      letterSpacing: 1.0,
                       fontSize: 11.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -214,7 +215,7 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                   TextButton(
                     onPressed: () => {},
                     child: Text(
-                      'Ver.2.3.1 \u00A9 Made by Vustron Vustronus 2023',
+                      'Ver.2.3.2 \u00A9 Made by Vustron Vustronus 2023',
                       style: GoogleFonts.zenDots(
                         fontSize: 7.0,
                         fontWeight: FontWeight.bold,
@@ -241,94 +242,77 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
             child: Column(
               children: <Widget>[
                 Builder(
-                  builder: (context) => Center(
-                    child: InkWell(
-                      onTap: () {
-                        Scaffold.of(context).openDrawer();
-                      },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                backgroundImage: user != null
-                                    ? (photoUrl.startsWith('http') ||
-                                            photoUrl.startsWith('https'))
-                                        ? NetworkImage(photoUrl)
-                                        : AssetImage(photoUrl)
-                                            as ImageProvider<Object>?
-                                    : AssetImage(photoUrl),
-                                radius: 20.0,
+                  builder: (context) => InkWell(
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              backgroundImage: user != null
+                                  ? (photoUrl.startsWith('http') ||
+                                          photoUrl.startsWith('https'))
+                                      ? NetworkImage(photoUrl)
+                                      : AssetImage(photoUrl)
+                                          as ImageProvider<Object>?
+                                  : AssetImage(photoUrl),
+                              radius: 20.0,
+                            ),
+                            SizedBox(
+                              width: 8.0,
+                            ),
+                            Text(
+                              name,
+                              style: GoogleFonts.zenDots(
+                                color: widget.textColor,
+                                fontSize: 12.0,
+                                fontWeight: FontWeight.bold,
                               ),
-                              SizedBox(
-                                width: 8.0,
-                              ),
-                              Text(
-                                name,
-                                style: GoogleFonts.zenDots(
-                                  color: widget.textColor,
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 SizedBox(height: 10.0),
-                Center(
-                  child: TextButton.icon(
-                    onPressed: () async {
-                      Future.delayed(Duration(seconds: 0), () async {
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder:
-                                (context, animation, secondaryAnimation) =>
-                                    ChangeLocation(),
-                            transitionsBuilder: (context, animation,
-                                secondaryAnimation, child) {
-                              const begin = Offset(1.0, 0.0);
-                              const end = Offset.zero;
-                              const curve = Curves.easeInOut;
-
-                              var tween = Tween(begin: begin, end: end)
-                                  .chain(CurveTween(curve: curve));
-
-                              var offsetAnimation = animation.drive(tween);
-
-                              return SlideTransition(
-                                position: offsetAnimation,
-                                child: child,
-                              );
-                            },
+                TextButton.icon(
+                  onPressed: () async {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return Center(
+                          child: SpinKitPouringHourGlass(
+                            color: Colors.amber,
+                            size: 100.0,
                           ),
-                        ).then((result) {
-                          if (result != null) {
-                            setState(() {
-                              widget.data = {
-                                'time': result['time'],
-                                'location': result['location'],
-                                'flag': result['flag'],
-                                'isDayTime': result['isDayTime'],
-                              };
-                            });
-                          }
-                        });
+                        );
+                      },
+                    );
+                    Future.delayed(Duration(seconds: 1), () async {
+                      Navigator.pop(context);
+                      dynamic result = await Navigator.pushReplacementNamed(
+                          context, '/changelocation');
+                      setState(() {
+                        widget.data = {
+                          'time': result['time'],
+                          'location': result['location'],
+                          'flag': result['flag'],
+                          'isDayTime': result['isDayTime'],
+                        };
                       });
-                    },
-                    icon: Icon(Icons.location_pin, color: widget.textColor),
-                    label: Text('Change Location',
-                        style: GoogleFonts.zenDots(
-                          color: widget.textColor,
-                        )),
-                  ),
+                    });
+                  },
+                  icon: Icon(Icons.location_pin, color: widget.textColor),
+                  label: Text('Change Location',
+                      style: GoogleFonts.zenDots(
+                        color: widget.textColor,
+                      )),
                 ),
                 SizedBox(height: 20.0),
                 Row(
