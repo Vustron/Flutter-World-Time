@@ -1,4 +1,4 @@
-**<h1>WorldTimeApp v2.3.0</h1>**
+**<h1>WorldTimeApp v2.3.2</h1>**
 
 ### **Overview**
 
