@@ -6,6 +6,8 @@ import '../controller/localAuth.dart';
 import 'package:social_auth_buttons/social_auth_buttons.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
+import 'signin.dart';
+
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
@@ -125,8 +127,28 @@ class _SignUpState extends State<SignUp> {
                             print('signed up');
                             EasyLoading.showSuccess('Signup Success!');
                             print(result.uid);
-                            await Future.delayed(Duration(seconds: 1));
-                            Navigator.pushNamed(context, '/signin');
+                            await Future.delayed(Duration(seconds: 2));
+                            Navigator.pushReplacement(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (_, __, ___) =>
+                                    SignIn(), // Replace with the actual screen you want to navigate to
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  const begin = Offset(-1.0, 0.0);
+                                  const end = Offset.zero;
+                                  const curve = Curves.easeInOutQuart;
+
+                                  var tween = Tween(begin: begin, end: end)
+                                      .chain(CurveTween(curve: curve));
+
+                                  var offsetAnimation = animation.drive(tween);
+
+                                  return SlideTransition(
+                                      position: offsetAnimation, child: child);
+                                },
+                              ),
+                            );
                           }
                         }
                       },
@@ -147,7 +169,30 @@ class _SignUpState extends State<SignUp> {
                       onPressed: () async {
                         EasyLoading.show(status: 'Loading...');
                         await Future.delayed(Duration(seconds: 1));
-                        Navigator.pushNamed(context, '/signin');
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    SignIn(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              const begin = Offset(1.0, 0.0);
+                              const end = Offset.zero;
+                              const curve = Curves.easeInOut;
+
+                              var tween = Tween(begin: begin, end: end)
+                                  .chain(CurveTween(curve: curve));
+
+                              var offsetAnimation = animation.drive(tween);
+
+                              return SlideTransition(
+                                position: offsetAnimation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
                         EasyLoading.dismiss();
                       },
                       style: ElevatedButton.styleFrom(

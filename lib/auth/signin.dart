@@ -8,6 +8,9 @@ import 'package:social_auth_buttons/social_auth_buttons.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../controller/googleAuth.dart';
+import '../utils/loader.dart';
+import '../utils/wrapper.dart';
+import 'signup.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -127,8 +130,26 @@ class _SignInState extends State<SignIn> {
                             print('signed in');
                             EasyLoading.showSuccess('SignIn Success!');
                             print(result.uid);
-                            await Future.delayed(Duration(seconds: 1));
-                            Navigator.pushNamed(context, '/getdata');
+                            await Future.delayed(Duration(seconds: 2));
+                            Navigator.pushReplacement(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (_, __, ___) => Wrapper(
+                                  child: Loading(),
+                                ),
+                                transitionsBuilder: (context, animation,
+                                    secondaryAnimation, child) {
+                                  const begin = Offset(0.0, -1.0);
+                                  const end = Offset.zero;
+                                  const curve = Curves.easeInOutQuart;
+                                  var tween = Tween(begin: begin, end: end)
+                                      .chain(CurveTween(curve: curve));
+                                  var offsetAnimation = animation.drive(tween);
+                                  return SlideTransition(
+                                      position: offsetAnimation, child: child);
+                                },
+                              ),
+                            );
                           }
                         }
                       },
@@ -149,7 +170,30 @@ class _SignInState extends State<SignIn> {
                       onPressed: () async {
                         EasyLoading.show(status: 'Loading...');
                         await Future.delayed(Duration(seconds: 1));
-                        Navigator.pushNamed(context, '/signup');
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) =>
+                                    SignUp(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              const begin = Offset(-1.0, 0.0);
+                              const end = Offset.zero;
+                              const curve = Curves.easeInOut;
+
+                              var tween = Tween(begin: begin, end: end)
+                                  .chain(CurveTween(curve: curve));
+
+                              var offsetAnimation = animation.drive(tween);
+
+                              return SlideTransition(
+                                position: offsetAnimation,
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
                         EasyLoading.dismiss();
                       },
                       style: ElevatedButton.styleFrom(
@@ -190,12 +234,35 @@ class _SignInState extends State<SignIn> {
                       onPressed: () async {
                         try {
                           final provider = Provider.of<GoogleSignInProvider>(
-                              context,
-                              listen: false);
+                            context,
+                            listen: false,
+                          );
                           EasyLoading.show(status: 'Loading...');
                           await provider.googleLogin();
                           EasyLoading.showSuccess('SignIn Success!');
-                          Navigator.pushNamed(context, '/getdata');
+                          await Future.delayed(Duration(seconds: 2));
+                          Navigator.pushReplacement(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder: (_, __, ___) => Wrapper(
+                                child: Loading(),
+                              ),
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                const begin = Offset(0.0, -1.0);
+                                const end = Offset.zero;
+                                const curve = Curves.easeInOutQuart;
+
+                                var tween = Tween(begin: begin, end: end)
+                                    .chain(CurveTween(curve: curve));
+
+                                var offsetAnimation = animation.drive(tween);
+
+                                return SlideTransition(
+                                    position: offsetAnimation, child: child);
+                              },
+                            ),
+                          );
                         } catch (error) {
                           print('Error during Google login: $error');
                           EasyLoading.showError('Something went wrong');
