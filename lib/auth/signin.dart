@@ -132,6 +132,8 @@ class _SignInState extends State<SignIn> {
                             EasyLoading.showSuccess('SignIn Success!');
                             print(result.uid);
                             await Future.delayed(Duration(seconds: 1));
+                            Navigator.pop(context);
+                            Navigator.pop(context);
                             Navigator.pushNamed(context, '/getdata');
                           }
                         }
@@ -153,6 +155,7 @@ class _SignInState extends State<SignIn> {
                       onPressed: () async {
                         EasyLoading.show(status: 'Loading...');
                         await Future.delayed(Duration(seconds: 1));
+                        Navigator.pop(context);
                         Navigator.push(
                           context,
                           PageRouteBuilder(

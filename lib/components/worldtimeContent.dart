@@ -307,6 +307,7 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                     );
                     Future.delayed(Duration(seconds: 1), () async {
                       Navigator.pop(context);
+                      Navigator.pop(context);
                       dynamic result = await Navigator.pushReplacementNamed(
                           context, '/changelocation');
                       setState(() {

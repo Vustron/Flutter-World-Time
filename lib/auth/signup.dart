@@ -168,6 +168,7 @@ class _SignUpState extends State<SignUp> {
                       onPressed: () async {
                         EasyLoading.show(status: 'Loading...');
                         await Future.delayed(Duration(seconds: 1));
+                        Navigator.pop(context);
                         Navigator.push(
                           context,
                           PageRouteBuilder(
