@@ -1,8 +1,8 @@
-**<h1>WorldTimeApp v2.3.2</h1>**
+**<h1>WorldTimeApp v2.3.3</h1>**
 
 ### **Overview**
 
-The Flutter World Time App is a mobile application built using Dart and Flutter that provides users with accurate world time information. This release introduces several key features and improvements to enhance the user experience.
+The Flutter World Time App is a mobile application built using Dart and Flutter that provides users with accurate world time information.
 
 ### **Screenshots**
 
@@ -32,29 +32,32 @@ https://github.com/Vustron/Flutter-World-Time/assets/121848978/ee4f07a2-cbe9-4b1
    Implements Firebase for user authentication to enhance security and personalize user experiences.
 3. **Intuitive User Interface**
    The app is designed with a focus on user-friendly navigation and a clean interface to ensure a smooth user experience.
-4. **Limited Country Time**
+4. **Country Time**
    Provides users with the ability to view time information for a curated list of countries, streamlining the user experience by focusing on essential information.
 
 ### **Technology Stack**
 
 <table>
   <tr>
-    <td style="margin: 10px;"><b>Google Dart</b><br><img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/43efe709-1d15-468d-8353-74449b73ef85" width="400" height="120"></td>
-    <td style="margin: 10px;"><b>Flutter</b><br><img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/a845ab36-0c6a-4dc4-ab4d-ee7cb0c03708" width="400" height="120"></td>
-    <td style="margin: 10px;"><b>Firebase</b><br><img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/5ff6ca2b-8962-4206-bc1d-9ec97f304713" width="400" height="120"></td>
+    <td style="margin: 10px;">
+      <img src="https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white" align="center" alt="dart"/>
+    </td>
+    <td style="margin: 10px;">
+      <img src="https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=flutter&logoColor=white" align="center" alt="flutter" />
+    </td>
+    <td style="margin: 10px;">
+      <img src="https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white" align="center" alt="Firebase" />
+    </td>
   </tr>
 </table>
 
 ### **How to Use**
 
-Clone the repository.
-Install dependencies using:
+- Install the apk
+https://github.com/Vustron/Flutter-World-Time/releases/tag/V.2.3.2
+- Then Run the app
 
-```bash
-flutter pub get
-```
 
-Run the app on an emulator or physical device.
 
 ### **Feedback**
 
