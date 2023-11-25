@@ -8,14 +8,32 @@ The Flutter World Time App is a mobile application built using Dart and Flutter 
 
 <table>
   <tr>
-    <td style="margin: 10px;"><b>Sign-In Screen</b><br><img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/cfb0979f-2ecc-4922-a259-b0c9b51ef2b3" width="500" height="500"></td>
-    <td style="margin: 10px;"><b>Sign-Up Screen</b><br><img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/7bbede04-e5c1-43a1-bd00-8ab8ead812d4" width="500" height="500"></td>
-    <td style="margin: 10px;"><b>Home Screen</b><br><img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/32f07708-cbe8-40e4-8a75-b4e9c53bde84" width="500" height="500"></td>
+    <td style="margin: 10px;">
+      <b>Sign-In Screen</b><br>
+      <img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/5ba3417b-ff8c-4d06-8a16-8691d8380bea" width="250" height="450">
+    </td>
+    <td style="margin: 10px;">
+      <b>Sign-Up Screen</b><br>
+      <img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/567d6f2d-1a03-46d0-b255-606d8a497517" width="250" height="450">
+    </td>
+    <td style="margin: 10px;">
+      <b>Home Screen</b><br>
+      <img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/32f07708-cbe8-40e4-8a75-b4e9c53bde84" width="250" height="450">
+    </td>
   </tr>
   <tr>
-    <td style="margin: 10px;"><b>Profile Screen</b><br><img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/30916817-087d-4b85-8100-1754eb826ee9" width="500" height="500"></td>
-    <td style="margin: 10px;"><b>Change Location Screen</b><br><img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/8e25e1a3-fcdb-4687-b52e-78af143ff8b8" width="500" height="500"></td>
-    <td style="margin: 10px;"><b>Update User Profile Screen</b><br><img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/12183524-6af5-4c65-873a-3e481168fca3" width="500" height="500"></td>
+    <td style="margin: 10px;">
+      <b>Profile Screen</b><br>
+      <img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/30916817-087d-4b85-8100-1754eb826ee9" width="250" height="450">
+    </td>
+    <td style="margin: 10px;">
+      <b>Change Location Screen</b><br>
+      <img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/e209cae9-24cd-4bb1-90d0-cfaf2da241dd" width="250" height="450">
+    </td>
+    <td style="margin: 10px;">
+      <b>Update User Profile Screen</b><br>
+      <img src="https://github.com/Vustron/Flutter-World-Time/assets/121848978/da74b304-1c61-4577-9ada-c00013283f5f" width="250" height="450">
+    </td>
   </tr>
 </table>
 
