@@ -43,6 +43,12 @@ class _ChangeLocationState extends State<ChangeLocation> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    locations.sort((a, b) => a.location.compareTo(b.location));
+  }
+
+  @override
   Widget build(BuildContext context) {
     print('Build function run');
     return Scaffold(
