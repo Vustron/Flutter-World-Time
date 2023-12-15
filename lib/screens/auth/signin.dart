@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '../../controller/localAuth.dart';
 import 'package:social_auth_buttons/social_auth_buttons.dart';
@@ -132,8 +133,12 @@ class _SignInState extends State<SignIn> {
                             EasyLoading.showSuccess('SignIn Success!');
                             print(result.uid);
                             await Future.delayed(Duration(seconds: 1));
-                            Navigator.pop(context);
-                            Navigator.pushNamed(context, '/getdata');
+                            Navigator.pushReplacement(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.bottomToTop,
+                                  child: Loading(),
+                                ));
                           }
                         }
                       },
@@ -223,7 +228,12 @@ class _SignInState extends State<SignIn> {
                           EasyLoading.show(status: 'Loading...');
                           await provider.googleLogin();
                           EasyLoading.showSuccess('SignIn Success!');
-                          Navigator.pushNamed(context, '/getdata');
+                          Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.bottomToTop,
+                                child: Loading(),
+                              ));
                         } catch (error) {
                           print('Error during Google login: $error');
                           EasyLoading.showError('Something went wrong');
@@ -240,23 +250,6 @@ class _SignInState extends State<SignIn> {
                         letterSpacing: 1.0,
                         fontSize: 10.0,
                         fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 50.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () => {},
-                      child: Text(
-                        'Ver.2.3.3 \u00A9 Made by Vustron Vustronus 2023',
-                        style: GoogleFonts.zenDots(
-                          fontSize: 7.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[700],
-                        ),
                       ),
                     ),
                   ],

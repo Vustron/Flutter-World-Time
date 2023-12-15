@@ -1,13 +1,19 @@
-// ignore_for_file: file_names, prefer_const_constructors, prefer_const_constructors_in_immutables, camel_case_types, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables, unused_import, unused_local_variable, must_be_immutable, unused_field, use_build_context_synchronously, no_leading_underscores_for_local_identifiers
+// ignore_for_file: file_names, prefer_const_constructors, prefer_const_constructors_in_immutables, camel_case_types, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_literals_to_create_immutables, unused_import, unused_local_variable, must_be_immutable, unused_field, use_build_context_synchronously, no_leading_underscores_for_local_identifiers, avoid_print
+
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '../controller/googleAuth.dart';
 import '../controller/localAuth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../main.dart';
+import '../screens/auth/signin.dart';
 import '../screens/changeLocation.dart';
 import 'editProfileContent.dart';
 
@@ -29,6 +35,7 @@ class WorldTimeContent extends StatefulWidget {
 
 class _WorldTimeContentState extends State<WorldTimeContent> {
   final AuthController _auth = AuthController();
+  String? _image;
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +56,8 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
     final User? user = FirebaseAuth.instance.currentUser;
 
     // Default values if user is null
-    String name = 'Default Name';
-    String email = 'default@email.com';
+    String name = '';
+    String email = '';
     String photoUrl = 'assets/images/vustron.png';
 
     if (user != null) {
@@ -80,14 +87,16 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                       ),
                     ),
                     SizedBox(height: 30.0),
-                    CircleAvatar(
-                      backgroundImage: user != null
-                          ? (photoUrl.startsWith('http') ||
-                                  photoUrl.startsWith('https'))
-                              ? NetworkImage(photoUrl)
-                              : AssetImage(photoUrl) as ImageProvider<Object>?
-                          : AssetImage(photoUrl),
-                      radius: 50.0,
+                    ClipRRect(
+                      child: CircleAvatar(
+                        backgroundImage: user != null
+                            ? (photoUrl.startsWith('http') ||
+                                    photoUrl.startsWith('https'))
+                                ? NetworkImage(photoUrl)
+                                : AssetImage(photoUrl) as ImageProvider<Object>?
+                            : AssetImage(photoUrl),
+                        radius: 50.0,
+                      ),
                     ),
                   ],
                 ),
@@ -192,6 +201,13 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                                         listen: false);
                                 provider.googleLogout();
                                 EasyLoading.showSuccess('Logout Success!');
+                                Navigator.pushReplacement(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.size,
+                                      alignment: Alignment.bottomCenter,
+                                      child: SignIn(),
+                                    ));
                               } catch (e) {
                                 EasyLoading.showError('Logout Failed: $e');
                               }
@@ -218,23 +234,6 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                     );
                   },
                 ),
-              ),
-              SizedBox(height: 126),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextButton(
-                    onPressed: () => {},
-                    child: Text(
-                      'Ver.2.3.2 \u00A9 Made by Vustron Vustronus 2023',
-                      style: GoogleFonts.zenDots(
-                        fontSize: 7.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey[700],
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ],
           ),
@@ -307,17 +306,24 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                     );
                     Future.delayed(Duration(seconds: 1), () async {
                       Navigator.pop(context);
-                      Navigator.pop(context);
-                      dynamic result = await Navigator.pushReplacementNamed(
-                          context, '/changelocation');
-                      setState(() {
-                        widget.data = {
-                          'time': result['time'],
-                          'location': result['location'],
-                          'flag': result['flag'],
-                          'isDayTime': result['isDayTime'],
-                        };
-                      });
+
+                      dynamic result = await Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChangeLocation(),
+                        ),
+                      );
+
+                      if (result != null) {
+                        setState(() {
+                          widget.data = {
+                            'time': result['time'],
+                            'location': result['location'],
+                            'flag': result['flag'],
+                            'isDayTime': result['isDayTime'],
+                          };
+                        });
+                      }
                     });
                   },
                   icon: Icon(Icons.location_pin, color: widget.textColor),

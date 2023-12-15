@@ -16,6 +16,7 @@ import '../../utils/loader.dart';
 import '../../utils/wrapper.dart';
 import '../main.dart';
 import 'auth/signin.dart';
+import 'worldtime.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -35,35 +36,27 @@ class _SplashScreenState extends State<SplashScreen> {
         systemNavigationBarColor: Colors.black,
         statusBarColor: Color.fromRGBO(0, 0, 0, 1),
       ));
-    }).then((value) async {
-      Navigator.pushReplacement(
-          context,
-          PageTransition(
-            type: PageTransitionType.fade,
-            child: SignIn(),
-          ));
+      if (AuthController.auth.currentUser != null) {
+        print('\nUser: ${AuthController.auth.currentUser}');
+
+        Navigator.pushReplacement(
+            context,
+            PageTransition(
+              type: PageTransitionType.size,
+              alignment: Alignment.bottomCenter,
+              child: Loading(),
+            ));
+      } else {
+        Navigator.pushReplacement(
+            context,
+            PageTransition(
+              type: PageTransitionType.size,
+              alignment: Alignment.bottomCenter,
+              child: SignIn(),
+            ));
+      }
     });
   }
-
-  // if (API.auth.currentUser != null) {
-  //   print('\nUser: ${API.auth.currentUser}');
-
-  //   Navigator.pushReplacement(
-  //       context,
-  //       PageTransition(
-  //         type: PageTransitionType.size,
-  //         alignment: Alignment.bottomCenter,
-  //         child: HomeScreen(),
-  //       ));
-  // } else {
-  //   Navigator.pushReplacement(
-  //       context,
-  //       PageTransition(
-  //         type: PageTransitionType.size,
-  //         alignment: Alignment.bottomCenter,
-  //         child: LoginScreen(),
-  //       ));
-  // }
 
   @override
   Widget build(BuildContext context) {

@@ -76,7 +76,7 @@ class _EditProfileState extends State<EditProfile> {
                     await _auth.updateUserData(
                         _currentDisplayName, _currentEmail);
                     EasyLoading.showSuccess('Update Success!');
-                    Navigator.pushNamed(context, '/profile');
+                    Navigator.pop(context);
                     EasyLoading.dismiss();
                   }
                 },

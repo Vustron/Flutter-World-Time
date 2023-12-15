@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import '../../controller/localAuth.dart';
 import 'package:social_auth_buttons/social_auth_buttons.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import '../../utils/loader.dart';
 import 'signin.dart';
 
 class SignUp extends StatefulWidget {
@@ -128,26 +130,11 @@ class _SignUpState extends State<SignUp> {
                             print(result.uid);
                             await Future.delayed(Duration(seconds: 2));
                             Navigator.pushReplacement(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder: (_, __, ___) =>
-                                    SignIn(), // Replace with the actual screen you want to navigate to
-                                transitionsBuilder: (context, animation,
-                                    secondaryAnimation, child) {
-                                  const begin = Offset(-1.0, 0.0);
-                                  const end = Offset.zero;
-                                  const curve = Curves.easeInOutQuart;
-
-                                  var tween = Tween(begin: begin, end: end)
-                                      .chain(CurveTween(curve: curve));
-
-                                  var offsetAnimation = animation.drive(tween);
-
-                                  return SlideTransition(
-                                      position: offsetAnimation, child: child);
-                                },
-                              ),
-                            );
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.bottomToTop,
+                                  child: Loading(),
+                                ));
                           }
                         }
                       },
@@ -205,23 +192,6 @@ class _SignUpState extends State<SignUp> {
                           letterSpacing: 1.0,
                           fontSize: 12.0,
                           fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 195.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () => {},
-                      child: Text(
-                        'Ver.2.3.3 \u00A9 Made by Vustron Vustronus 2023',
-                        style: GoogleFonts.zenDots(
-                          fontSize: 7.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[700],
                         ),
                       ),
                     ),

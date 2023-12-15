@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../model/worldtime.dart';
+import '../screens/worldtime.dart';
 
 class ChangeLocationContent extends StatefulWidget {
   final List<WorldTimeData> locations;
@@ -17,12 +18,20 @@ class _ChangeLocationContentState extends State<ChangeLocationContent> {
   void updateTime(int index) async {
     WorldTimeData instance = widget.locations[index];
     await instance.getTime();
-    Navigator.pushReplacementNamed(context, '/', arguments: {
-      'location': instance.location,
-      'flag': instance.flag,
-      'time': instance.time,
-      'isDayTime': instance.isDayTime,
-    });
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Home(),
+        settings: RouteSettings(
+          arguments: {
+            'location': instance.location,
+            'flag': instance.flag,
+            'time': instance.time,
+            'isDayTime': instance.isDayTime,
+          },
+        ),
+      ),
+    );
   }
 
   @override
