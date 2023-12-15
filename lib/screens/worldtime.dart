@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import '../components/worldtimeContent.dart';
 
-class WorldTime extends StatefulWidget {
-  const WorldTime({super.key});
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<WorldTime> createState() => _WorldTimeState();
+  State<Home> createState() => _HomeState();
 }
 
-class _WorldTimeState extends State<WorldTime> {
+class _HomeState extends State<Home> {
   late Map<dynamic, dynamic> data;
 
   @override

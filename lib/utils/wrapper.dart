@@ -2,11 +2,11 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_world_time_app/views/worldtimeView.dart';
+import 'package:flutter_world_time_app/screens/worldtime.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
-import '../auth/authenticate.dart';
-import '../auth/signin.dart';
+import '../screens/auth/authenticate.dart';
+import '../screens/auth/signin.dart';
 import 'loader.dart';
 
 class Wrapper extends StatefulWidget {

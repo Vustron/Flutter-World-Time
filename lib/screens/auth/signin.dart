@@ -1,24 +1,28 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, camel_case_types, unused_import, avoid_unnecessary_containers, sort_child_properties_last, unused_field, unused_local_variable, avoid_print, use_build_context_synchronously
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, library_private_types_in_public_api, camel_case_types, unused_import, avoid_unnecessary_containers, sort_child_properties_last, unused_field, unused_local_variable, avoid_print, use_build_context_synchronously, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../controller/localAuth.dart';
+import 'package:provider/provider.dart';
+import '../../controller/localAuth.dart';
 import 'package:social_auth_buttons/social_auth_buttons.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'signin.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import '../../controller/googleAuth.dart';
+import '../../utils/loader.dart';
+import '../../utils/wrapper.dart';
+import 'signup.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class SignIn extends StatefulWidget {
+  const SignIn({super.key});
 
   @override
-  _SignUpState createState() => _SignUpState();
+  _SignInState createState() => _SignInState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _SignInState extends State<SignIn> {
   final AuthController _auth = AuthController();
   final _formkey = GlobalKey<FormState>();
 
-  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isPasswordVisible = false;
@@ -115,47 +119,29 @@ class _SignUpState extends State<SignUp> {
                   children: [
                     ElevatedButton(
                       onPressed: () async {
-                        if (_formkey.currentState!.validate()) {
-                          EasyLoading.show(status: 'Registering new user...');
+                        if (_formkey.currentState != null &&
+                            _formkey.currentState!.validate()) {
+                          EasyLoading.show(status: 'Logging in...');
                           dynamic result = await _auth
-                              .registerWithEmailAndPassword(email, password);
+                              .signInWithEmailAndPassword(email, password);
                           if (result == null) {
-                            print('register error');
-                            EasyLoading.showError('Failed with Error');
+                            print('SignIn error');
+                            EasyLoading.showError('SignIn Failed with Error');
                           } else {
-                            print('signed up');
-                            EasyLoading.showSuccess('Signup Success!');
+                            print('signed in');
+                            EasyLoading.showSuccess('SignIn Success!');
                             print(result.uid);
-                            await Future.delayed(Duration(seconds: 2));
-                            Navigator.pushReplacement(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder: (_, __, ___) =>
-                                    SignIn(), // Replace with the actual screen you want to navigate to
-                                transitionsBuilder: (context, animation,
-                                    secondaryAnimation, child) {
-                                  const begin = Offset(-1.0, 0.0);
-                                  const end = Offset.zero;
-                                  const curve = Curves.easeInOutQuart;
-
-                                  var tween = Tween(begin: begin, end: end)
-                                      .chain(CurveTween(curve: curve));
-
-                                  var offsetAnimation = animation.drive(tween);
-
-                                  return SlideTransition(
-                                      position: offsetAnimation, child: child);
-                                },
-                              ),
-                            );
+                            await Future.delayed(Duration(seconds: 1));
+                            Navigator.pop(context);
+                            Navigator.pushNamed(context, '/getdata');
                           }
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.green,
                       ),
                       child: Text(
-                        'Sign-Up',
+                        'Sign-In',
                         style: GoogleFonts.zenDots(
                           color: Colors.white,
                           letterSpacing: 1.0,
@@ -168,16 +154,15 @@ class _SignUpState extends State<SignUp> {
                       onPressed: () async {
                         EasyLoading.show(status: 'Loading...');
                         await Future.delayed(Duration(seconds: 1));
-                        Navigator.pop(context);
                         Navigator.push(
                           context,
                           PageRouteBuilder(
                             pageBuilder:
                                 (context, animation, secondaryAnimation) =>
-                                    SignIn(),
+                                    SignUp(),
                             transitionsBuilder: (context, animation,
                                 secondaryAnimation, child) {
-                              const begin = Offset(1.0, 0.0);
+                              const begin = Offset(-1.0, 0.0);
                               const end = Offset.zero;
                               const curve = Curves.easeInOut;
 
@@ -196,10 +181,10 @@ class _SignUpState extends State<SignUp> {
                         EasyLoading.dismiss();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
+                        backgroundColor: Colors.blue,
                       ),
                       child: Text(
-                        'Sign-In',
+                        'Sign-Up',
                         style: GoogleFonts.zenDots(
                           color: Colors.white,
                           letterSpacing: 1.0,
@@ -210,7 +195,56 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ],
                 ),
-                SizedBox(height: 195.0),
+                SizedBox(height: 30.0),
+                Divider(
+                  height: 20,
+                  thickness: 2,
+                  color: Colors.amber,
+                ),
+                SizedBox(height: 10.0),
+                Text(
+                  'Or',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.amber,
+                  ),
+                ),
+                SizedBox(height: 10.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GoogleAuthButton(
+                      onPressed: () async {
+                        try {
+                          final provider = Provider.of<GoogleSignInProvider>(
+                              context,
+                              listen: false);
+                          EasyLoading.show(status: 'Loading...');
+                          await provider.googleLogin();
+                          EasyLoading.showSuccess('SignIn Success!');
+                          Navigator.pushNamed(context, '/getdata');
+                        } catch (error) {
+                          print('Error during Google login: $error');
+                          EasyLoading.showError('Something went wrong');
+                        } finally {
+                          EasyLoading.dismiss();
+                        }
+                      },
+                      style: AuthButtonStyle.icon,
+                    ),
+                    Text(
+                      'Sign in using Google    ',
+                      style: GoogleFonts.zenDots(
+                        color: Colors.amberAccent,
+                        letterSpacing: 1.0,
+                        fontSize: 10.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 50.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

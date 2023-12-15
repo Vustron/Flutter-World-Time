@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../controller/googleAuth.dart';
 import '../controller/localAuth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../views/changeLocationView.dart';
+import '../screens/changeLocation.dart';
 import 'editProfileContent.dart';
 
 class WorldTimeContent extends StatefulWidget {

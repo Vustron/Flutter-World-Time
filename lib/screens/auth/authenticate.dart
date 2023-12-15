@@ -2,7 +2,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_world_time_app/auth/signin.dart';
+import 'package:flutter_world_time_app/screens/auth/signin.dart';
 
 class Authenticate extends StatefulWidget {
   const Authenticate({super.key});
