@@ -31,7 +31,7 @@ class WorldTimeData {
       now = now.add(Duration(hours: int.parse(offset)));
 
       // Adjusted calculation considering UTC offset
-      isDayTime = now.hour >= 6 && now.hour < 20;
+      isDayTime = now.hour >= 6 && now.hour < 18;
       time = DateFormat.jm().format(now);
     } catch (e) {
       print('Caught error: $e');

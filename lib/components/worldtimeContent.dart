@@ -305,15 +305,12 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                       },
                     );
                     Future.delayed(Duration(seconds: 1), () async {
-                      Navigator.pop(context);
-
                       dynamic result = await Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ChangeLocation(),
-                        ),
-                      );
-
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.bottomToTop,
+                            child: ChangeLocation(),
+                          ));
                       if (result != null) {
                         setState(() {
                           widget.data = {
@@ -337,7 +334,7 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      widget.data != null ? widget.data!['location'] ?? '' : '',
+                      widget.data != null ? widget.data!['location'] : '',
                       style: GoogleFonts.abrilFatface(
                         fontSize: 28.0,
                         letterSpacing: 2.0,
@@ -351,7 +348,7 @@ class _WorldTimeContentState extends State<WorldTimeContent> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      widget.data?['time'] ?? '',
+                      widget.data != null ? widget.data!['time'] : '',
                       style: GoogleFonts.kdamThmorPro(
                         fontSize: 66.0,
                         color: widget.textColor,

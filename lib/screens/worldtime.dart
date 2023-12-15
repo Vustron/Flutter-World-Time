@@ -36,10 +36,10 @@ class _HomeState extends State<Home> {
   }
 
   String getBackgroundImage() {
-    return (data['isDayTime'] ?? false) ? 'day.jpg' : 'night.jpg';
+    return data['isDayTime'] ?? true ? 'day.jpg' : 'night.jpg';
   }
 
   Color getTextColor() {
-    return (data['isDayTime'] ?? false) ? Colors.white : Colors.amber;
+    return data['isDayTime'] ?? true ? Colors.white : Colors.amber;
   }
 }
